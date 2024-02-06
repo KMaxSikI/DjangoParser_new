@@ -18,11 +18,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from parserWBapp.api_views import PostViewSet, ProductViewSet
+
+router = routers.DefaultRouter()
+router.register(r'posts', PostViewSet)
+router.register(r'products', ProductViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('parserWBapp.urls', namespace='parsing')),
-    path('user/', include('userapp.urls', namespace='user'))
+    path('user/', include('userapp.urls', namespace='user')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/v0/', include(router.urls)),
 ]
 
 if settings.DEBUG:
