@@ -34,7 +34,8 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'parsing:parse_results' %}">Результат парсинга</a></li>
                         {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'user:logout' %}">Выход</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4">Добро пожаловать, {{user.username}}</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                        href="{%url 'user:profile' pk=user.pk%}">Добро пожаловать, {{user.username}} </a></li>
                         {% else %}
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'user:login' %}">Вход</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'user:registration' %}">Регистрация</a></li>
